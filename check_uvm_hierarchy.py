@@ -7,11 +7,6 @@ import glob
 # Get the list of all files and directories
 path = "uvm_files"
 #print(path)
-#dir_list = os.listdir(path)
-#print(dir_list)
-#print("Files and directories in '", path, "' :")
-# prints all files
-#print(dir_list)
 
 a = ["uvm_test", "uvm_driver", "uvm_monitor", "uvm_sequence", "uvm_sequence_item", "uvm_env"]
 print("\nChecking for: ", a, " in uvm hierarchy files.\n")
@@ -39,3 +34,14 @@ for i in glob.glob(path + '/*.sv'):
 
 print("\nFound these classes in the uvm hierachy: ", existing_classes)
 print("\nNeed these classes to be defined in the uvm hierarchy: ", list(set(a) - set(existing_classes)))
+
+#OUTPUT:
+#
+#Checking for:  ['uvm_test', 'uvm_driver', 'uvm_monitor', 'uvm_sequence', 'uvm_sequence_item', 'uvm_env']  in uvm hierarchy files.
+#
+#"uvm_driver"  exists in the file:  "uvm_files\driver1.sv"  in line number:  2
+#"uvm_test"  exists in the file:  "uvm_files\test1.sv"  in line number:  3
+#
+#Found these classes in the uvm hierachy:  ['uvm_driver', 'uvm_test']
+#
+#Need these classes to be defined in the uvm hierarchy:  ['uvm_env', 'uvm_sequence', 'uvm_sequence_item', 'uvm_monitor']
